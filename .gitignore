@@ -42,3 +42,5 @@ Platform_Game/Logs/shadercompiler-UnityShaderCompiler.exe0.log
 *.log
 *.log
 *.log
+Platform_Game/Logs/AssetImportWorker0.log
+Platform_Game/Logs/shadercompiler-AssetImportWorker0.log
