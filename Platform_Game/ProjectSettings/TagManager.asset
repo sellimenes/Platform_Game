@@ -6,11 +6,13 @@ TagManager:
   tags:
   - character
   - platform
+  - deadarea
+  - cactus
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - groundlayer
   - Water
   - UI
   - 

@@ -4,6 +4,8 @@
 // Tüm zeminlere "Ground" isminde LayerMask eklenmeli
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CharMov : MonoBehaviour
 {
@@ -65,6 +67,7 @@ public class CharMov : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = Vector2.up * jumpForce;
+            
         }
     }
 
@@ -74,5 +77,12 @@ public class CharMov : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "deadarea")
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
 
 }
