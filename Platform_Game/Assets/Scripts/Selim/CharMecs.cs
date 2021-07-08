@@ -20,13 +20,10 @@ public class CharMecs : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            TakeDamage(damage);
-        }
+        
     }
 
-    void TakeDamage (int damage)
+public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);

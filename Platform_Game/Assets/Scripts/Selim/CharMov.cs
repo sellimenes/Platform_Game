@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class CharMov : MonoBehaviour
 {
-
+    public CharMecs charMecs;
     public float speed; // Önerilen deðer 10
     public float jumpForce; // Önerilen deðer 40
     public Transform GroundCheck; // Karakter altýna eklenen boþ öðe eklenecek
@@ -17,6 +17,7 @@ public class CharMov : MonoBehaviour
     public float charScale; // Karakter x boyutu girilecek
     public Animator animator; // Animator icin referans alýndý
 
+    
     private float move;
     bool isGrounded;
     float horizontalMove = 0f;
@@ -34,7 +35,6 @@ public class CharMov : MonoBehaviour
     {
         Run();
         Jump();
-        //Animation();
     }
 
 
@@ -67,9 +67,10 @@ public class CharMov : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = Vector2.up * jumpForce;
-            
         }
+       
     }
+
 
     void Animation()
     {
@@ -79,10 +80,18 @@ public class CharMov : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "deadarea")
+        if (collision.gameObject.tag == "deadarea" || charMecs.currentHealth <= 0)//krakterimiz "deadarea" taglý objeye çarptýðýnda hangi iþlemler yapýlacak.
+                                                                               //veya karakterimizin caný sýfýr olduðunda hangi iþlemler yapýlacak.
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(0);//oyunun 0. scene tekrar baþlatýlsýn.
         }
-    }
 
+        if (collision.gameObject.tag == "cactus")//karakterimiz "cactus" taglý objeye çarptýðýnda hangi iþlemler yapýlacak.
+        {
+            
+            charMecs.TakeDamage(20);//her çarptýðýnda canýmýzdan 20 deðer azaltacaktýr.
+        }
+
+        
+    }
 }
