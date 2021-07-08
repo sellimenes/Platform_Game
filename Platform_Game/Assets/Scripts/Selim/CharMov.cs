@@ -34,7 +34,7 @@ public class CharMov : MonoBehaviour
     {
         Run();
         Jump();
-        Animation();
+        //Animation();
     }
 
 
